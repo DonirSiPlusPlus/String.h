@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <string.h>
+#include "s21_string.h"
+
+char *str = "hello world";
+char *src = " ";
+char s1[20] = "hello";
+char s2[20] = "";
+
+#test s21_strlen_test
+ck_assert_int_eq(strlen(str),s21_strlen(str));
+#test s21_memcmp_test
+ck_assert_int_eq(memcmp("hello world", " ", 5) , s21_memcmp("hello world", " ", 5));
+#test s21_strcmp_test
+ck_assert_int_eq(strcmp(src , str) , s21_strcmp(src ,str));
+#test s21_strncmp_test
+ck_assert_int_eq(strncmp(src , str ,5) , s21_strncmp(src ,str,5));
+#test s21_s21_strcspn_test
+ck_assert_uint_eq(strcspn(str , src) , s21_strcspn(str ,src));
+#test s21_strchr_test
+ck_assert_str_eq(strchr(str , 32) , s21_strchr(str , 32));
+#test s21_strpbrk_test
+ck_assert_str_eq(strpbrk(src,str),s21_strpbrk(src,str));
+#test s21_strrchr_test
+ck_assert_str_eq(strrchr(str,32),s21_strrchr(str,32));
+#test s21_strstr_test
+ck_assert_str_eq(strstr(str,src),s21_strstr(str,src));
+#test s21_strtok_test
+ck_assert_str_eq(strtok(str,""),s21_strtok(str,""));
+#test s21_strcat_test
+ck_assert_str_eq(strcat(s1, s2),s21_strcat(s1, s2));
+#test s21_strncat_test
+ck_assert_str_eq(strncat(s1,s2,3),s21_strncat(s1,s2,3));
+#test s21_strerror_test
+ck_assert_str_eq(strerror(5),s21_strerror(5));
+#test s21_strcpy_test
+ck_assert_str_eq(strcpy(s1,s2),s21_strcpy(s1,s2));
+#test s21_strncpy_test
+ck_assert_str_eq(strncpy(s1,s2,2),s21_strncpy(s1,s2,2));
+#test s21_strspn_test
+ck_assert_uint_eq(strspn(s1,"hello"),s21_strspn(s1,"hello"));
+#test s21_memchr_test
+ck_assert_ptr_eq(memchr(str, 'h' , 32),s21_memchr(str, 'h' , 32));
+#test s21_memcpy_test
+ck_assert_ptr_eq(memcpy(s1,"hello" ,6),s21_memcpy(s1,"hello" ,6));
+#test s21_memmove_test
+ck_assert_ptr_eq(memmove(s1,"hello" ,6),s21_memmove(s1,"hello" ,6));
+#test s21_memset_test
+ck_assert_ptr_eq(memset(s1,'h' ,5),s21_memset(s1,'h' ,5));
